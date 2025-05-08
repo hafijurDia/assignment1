@@ -28,10 +28,11 @@ type Age = number;                // For aliasing any type
 </pre>
 <hr>
 
-## 2.What is the use of the keyof keyword in TypeScript? Provide an example.
+## 2. What is the use of the keyof keyword in TypeScript? Provide an example.
 
- In TypeScript, the keyof operator generates a union type consisting of all the property names (keys) of a specified object type, represented as string literal types. This feature is particularly helpful when you need to constrain variables or function parameters to only accept valid property keys of an object, enhancing type safety. For instance, consider an interface Person with properties name and age. Using keyof Person results in the type 'name' | 'age', ensuring that only these keys can be used in relevant contexts. Here's an illustrative example:
- 
+ In TypeScript, the keyof operator generates a union type consisting of all the property names (keys) of a specified object type, represented as string literal types. This feature is particularly helpful when you need to constrain variables or function parameters to only accept valid property keys of an object, enhancing type safety. For instance, consider an interface Person with properties name and age. Using keyof Person results in the type 'name' | 'age', ensuring that only these keys can be used in relevant contexts. 
+
+### example:
  <pre>
  interface Person {
   name: string;
@@ -45,5 +46,20 @@ function getProperty(obj: Person, key: keyof Person): any {
 const person: Person = { name: "Alice", age: 30 };
 console.log(getProperty(person, "name")); // Output: Alice
 console.log(getProperty(person, "age"));  // Output: 30
-
  </pre>
+
+ <hr>
+
+ ## 3. Explain the difference between any, unknown, and never types in TypeScript.
+
+ ### any
+ <ol>
+    <li>In TypeScript it is the most flexible and least restrictive type. It allows you to assign any value to a variable and perform any operations on it without type errors. </li>
+    <li>It's useful for quickly working with dynamic data or older code, but is has some limitaion in TypeScript's type safety and can cause runtime errors.</li>
+    <li>Example</li>
+ </ol>
+  <pre>
+     let value: any = 'hello';  
+     value = 123;              
+     console.log(value.toUpperCase());  
+  </pre>
