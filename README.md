@@ -22,7 +22,28 @@ Types can define unions (string | number), primitives, or tuples. Interfaces onl
 Interfaces can be implemented by classes. Types cannot.
 
 ### Example
-<code>
+<pre>
 interface Person { name: string } // For objects/classes
 type Age = number;                // For aliasing any type
-</code>
+</pre>
+<hr>
+
+## 2.What is the use of the keyof keyword in TypeScript? Provide an example.
+
+ In TypeScript, the keyof operator generates a union type consisting of all the property names (keys) of a specified object type, represented as string literal types. This feature is particularly helpful when you need to constrain variables or function parameters to only accept valid property keys of an object, enhancing type safety. For instance, consider an interface Person with properties name and age. Using keyof Person results in the type 'name' | 'age', ensuring that only these keys can be used in relevant contexts. Here's an illustrative example:
+ 
+ <pre>
+ interface Person {
+  name: string;
+  age: number;
+}
+
+function getProperty(obj: Person, key: keyof Person): any {
+  return obj[key];
+}
+
+const person: Person = { name: "Alice", age: 30 };
+console.log(getProperty(person, "name")); // Output: Alice
+console.log(getProperty(person, "age"));  // Output: 30
+
+ </pre>
