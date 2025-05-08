@@ -34,18 +34,18 @@ type Age = number;                // For aliasing any type
 
 ### example:
  <pre>
- interface Person {
-  name: string;
-  age: number;
-}
+    interface Person {
+    name: string;
+    age: number;
+    }
 
-function getProperty(obj: Person, key: keyof Person): any {
-  return obj[key];
-}
+    function getProperty(obj: Person, key: keyof Person): any {
+    return obj[key];
+    }
 
-const person: Person = { name: "Alice", age: 30 };
-console.log(getProperty(person, "name")); // Output: Alice
-console.log(getProperty(person, "age"));  // Output: 30
+    const person: Person = { name: "Alice", age: 30 };
+    console.log(getProperty(person, "name")); // Output: Alice
+    console.log(getProperty(person, "age"));  // Output: 30
  </pre>
 
  <hr>
@@ -63,3 +63,27 @@ console.log(getProperty(person, "age"));  // Output: 30
      value = 123;              
      console.log(value.toUpperCase());  
   </pre>
+
+  ### Never
+  In TypeScript, never is a special type that represents values that never occur. It is used for functions that always throw an error or run into an infinite loop, meaning they do not successfully finish executing and do not return a value. For example, a function that always throws an exception or never terminates would have a return type of never. 
+
+  ### Example
+   <pre>
+          function throwError(message: string): never {
+         throw new Error(message); 
+     }
+   
+     type Shape = 'circle' | 'square';
+     function processShape(shape: Shape): string {
+         switch (shape) {
+             case 'circle': return 'Processing circle';
+             case 'square': return 'Processing square';
+             default: {
+                 const check: never = shape; 
+                 return 'Unexpected shape';
+             }
+         }
+     }
+     
+  </pre>
+
